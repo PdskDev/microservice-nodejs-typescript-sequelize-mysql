@@ -11,3 +11,5 @@ interface ITutorialRepository {
   delete(tutorialId: number): Promise<number>;
   deleteAll(): Promise<number>;
 }
+
+export default ITutorialRepository;
