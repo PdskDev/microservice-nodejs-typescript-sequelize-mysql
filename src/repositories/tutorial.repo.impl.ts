@@ -3,7 +3,15 @@ import Tutorial from '../models/tutorial.model';
 
 class TutorialRepository implements ITutorialRepository {
   async save(tutorial: Tutorial): Promise<Tutorial> {
-    throw new Error('Method not implemented.');
+    try {
+      return await Tutorial.create({
+        title: tutorial.title,
+        description: tutorial.description,
+        published: tutorial.published,
+      });
+    } catch (error) {
+      throw new Error('Failed to create new tutorial.');
+    }
   }
 
   async retrieveAll(searchParams: {
@@ -30,4 +38,4 @@ class TutorialRepository implements ITutorialRepository {
   }
 }
 
-export default TutorialRepository;
+export default new TutorialRepository();
