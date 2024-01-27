@@ -3,6 +3,7 @@ import tutorialRoutes from './tutorial.routes';
 
 export default class Routes {
   constructor(app: Application) {
+    app.use('/', tutorialRoutes);
     app.use('/api/tutorials', tutorialRoutes);
   }
 }

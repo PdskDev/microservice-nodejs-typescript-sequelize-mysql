@@ -8,10 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const tutorial_repo_impl_1 = __importDefault(require("../repositories/tutorial.repo.impl"));
 class TutorialController {
     create(req, res) {
-        return __awaiter(this, void 0, void 0, function* () { });
+        return __awaiter(this, void 0, void 0, function* () {
+            const title = req.body.title;
+            const published = req.body.published;
+            return yield tutorial_repo_impl_1.default
+                .retrieveAll({ title, published })
+                .then((tutorials) => {
+                res.status(200).json({
+                    tutorials: tutorials,
+                });
+            });
+        });
     }
     findAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () { });
@@ -30,6 +44,13 @@ class TutorialController {
     }
     findAllPublished(req, res) {
         return __awaiter(this, void 0, void 0, function* () { });
+    }
+    welcomeMessage(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return res.json({
+                message: 'Welcome to NadetDev Node.js Rest API with sequelize and Mysql',
+            });
+        });
     }
 }
 exports.default = TutorialController;
