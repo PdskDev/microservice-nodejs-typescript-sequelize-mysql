@@ -3,7 +3,7 @@ import { config, dialect } from '../config/db.config';
 import { Sequelize } from 'sequelize-typescript';
 import Tutorial from '../models/tutorial.model';
 
-class Database {
+export default class Database {
   public sequelize: Sequelize | undefined;
 
   constructor() {}
@@ -34,5 +34,3 @@ class Database {
       });
   }
 }
-
-export default Database;

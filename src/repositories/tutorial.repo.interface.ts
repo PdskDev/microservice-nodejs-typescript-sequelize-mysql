@@ -1,6 +1,6 @@
 import Tutorial from '../models/tutorial.model';
 
-interface ITutorialRepository {
+export default interface ITutorialRepository {
   save(tutorial: Tutorial): Promise<Tutorial>;
   retrieveAll(searchParams: {
     title?: string;
@@ -11,5 +11,3 @@ interface ITutorialRepository {
   delete(tutorialId: number): Promise<number>;
   deleteAll(): Promise<number>;
 }
-
-export default ITutorialRepository;
