@@ -11,6 +11,7 @@ class TutorialRoutes {
   }
 
   initializeRoutes() {
+    //Welcome test message
     this.router.get('/', this.controller.welcomeMessage);
 
     //Create a new tutorial
@@ -28,11 +29,11 @@ class TutorialRoutes {
     //delete single tutorial
     this.router.delete(`${this.apiPath}/:id`, this.controller.delete);
 
-    //delete single tutorial
+    //delete all tutorials
     this.router.delete(this.apiPath, this.controller.deleteAll);
 
-    //delete single tutorial
-    this.router.delete(
+    //get all published tutorials
+    this.router.get(
       `${this.apiPath}/published`,
       this.controller.findAllPublished
     );
