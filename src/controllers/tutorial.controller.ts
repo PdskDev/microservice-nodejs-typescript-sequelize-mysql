@@ -14,4 +14,10 @@ export default class TutorialController {
   async deleteAll(req: Request, res: Response) {}
 
   async findAllPublished(req: Request, res: Response) {}
+
+  async welcomeMessage(req: Request, res: Response) {
+    res.json({
+      message: 'Welcome to NadetDev Node.js Rest API with sequelize and Mysql',
+    });
+  }
 }
