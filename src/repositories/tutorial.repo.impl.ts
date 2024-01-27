@@ -63,7 +63,15 @@ class TutorialRepository implements ITutorialRepository {
   }
 
   async delete(tutorialId: number): Promise<number> {
-    throw new Error('Method not implemented.');
+    try {
+      return await Tutorial.destroy({
+        where: { id: tutorialId },
+      });
+    } catch (error) {
+      throw new Error(
+        `Failed to delete tutorial with id ${tutorialId}: ` + error
+      );
+    }
   }
 
   async deleteAll(): Promise<number> {
