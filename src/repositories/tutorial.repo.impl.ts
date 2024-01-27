@@ -39,7 +39,13 @@ class TutorialRepository implements ITutorialRepository {
   }
 
   async retreiveById(tutorialId: number): Promise<Tutorial> {
-    throw new Error('Method not implemented.');
+    try {
+      return Tutorial.findByPk(tutorialId);
+    } catch (error) {
+      throw new Error(
+        `Failed to retreive tutorial with id ${tutorialId}: ` + error
+      );
+    }
   }
 
   async update(tutorial: Tutorial): Promise<number> {
