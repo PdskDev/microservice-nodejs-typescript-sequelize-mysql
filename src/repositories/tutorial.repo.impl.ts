@@ -21,7 +21,10 @@ class TutorialRepository implements ITutorialRepository {
     published?: boolean;
   }): Promise<Tutorial[]> {
     try {
-      let condition: SearchCondition;
+      let condition: SearchCondition = {
+        title: {},
+        published: false,
+      };
 
       if (searchParams?.published) condition.published = true;
 
@@ -38,7 +41,7 @@ class TutorialRepository implements ITutorialRepository {
     }
   }
 
-  async retreiveById(tutorialId: number): Promise<Tutorial> {
+  async retreiveById(tutorialId: number): Promise<Tutorial | null> {
     try {
       return Tutorial.findByPk(tutorialId);
     } catch (error) {
