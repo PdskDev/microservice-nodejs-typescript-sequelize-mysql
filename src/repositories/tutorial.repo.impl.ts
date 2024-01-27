@@ -75,7 +75,14 @@ class TutorialRepository implements ITutorialRepository {
   }
 
   async deleteAll(): Promise<number> {
-    throw new Error('Method not implemented.');
+    try {
+      return Tutorial.destroy({
+        where: {},
+        truncate: false,
+      });
+    } catch (error) {
+      throw new Error(`Failed to delete tutorials: ` + error);
+    }
   }
 }
 
